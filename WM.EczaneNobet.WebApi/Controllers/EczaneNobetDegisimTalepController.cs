@@ -68,9 +68,12 @@ namespace WM.EczaneNobet.WebApi.Controllers
             int eczaneNobetGrupId = _eczaneNobetGrupService.GetDetayByEczaneId(eczaneId).Id;
             EczaneNobetGrup eczaneNobetGrup = new EczaneNobetGrup();
             eczaneNobetGrup = _eczaneNobetGrupService.GetById(eczaneNobetGrupId);
-            return _eczaneNobetDegisimTalepService.GetDetaylar(nobetUstGrup.Id)
+            List<EczaneNobetDegisimTalepDetay> returnList = new List<EczaneNobetDegisimTalepDetay>();
+            returnList =  _eczaneNobetDegisimTalepService.GetDetaylar(nobetUstGrup.Id)
                 .Where(w => w.NobetGrupId == eczaneNobetGrup.NobetGrupGorevTipId
-                && w.NobetTarihi > DateTime.Now).ToList();
+                && w.NobetTarihi > DateTime.Now)
+                .ToList();
+            return returnList;
         }
 
 

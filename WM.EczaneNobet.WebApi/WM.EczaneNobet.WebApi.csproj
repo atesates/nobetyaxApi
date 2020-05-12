@@ -159,6 +159,8 @@
     </Compile>
     <Compile Include="MessageHandlers\AuthenticationHandler.cs" />
     <Compile Include="MessageHandlers\Yetkilendirme.cs" />
+    <Compile Include="Models\MazeretTurApi.cs" />
+    <Compile Include="Models\NobetUstGrupMobilUygulamaApi.cs" />
     <Compile Include="Models\EczaneApi.cs" />
     <Compile Include="Models\EczaneNobetDegisimApi.cs" />
     <Compile Include="Models\EczaneNobetDegisimTalepApi.cs" />

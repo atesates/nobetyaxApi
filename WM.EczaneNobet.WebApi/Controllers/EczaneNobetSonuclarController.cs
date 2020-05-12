@@ -129,6 +129,14 @@ namespace WM.EczaneNobet.WebApi.Controllers
                 .ToList();
         }
 
+        [Route("eczane-nobet-grup-id/{eczaneNobetSonucId:int:min(1)}")]
+        [HttpGet]
+        public int GetMobilEczaneNobetGrupId(int eczaneNobetSonucId)
+        {
+
+            return _eczaneNobetSonucService.GetById(eczaneNobetSonucId).EczaneNobetGrupId;
+        }
+
         [Route("eczane-nobet-nobetler-tarihli-mobil/{userId:int:min(1)}")]
         [HttpPost]
         public List<EczaneGrupNobetSonuc> PostNobetlerimIstatistiklerim([FromBody]EczaneNobetSonucApi eczaneNobetSonucApi)

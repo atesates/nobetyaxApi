@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WM.EczaneNobet.WebApi.Models;
 using WM.Northwind.Business.Abstract.Authorization;
 using WM.Northwind.Business.Abstract.EczaneNobet;
 using WM.Northwind.Entities.ComplexTypes.EczaneNobet;
@@ -31,9 +32,24 @@ namespace WM.EczaneNobet.WebApi.Controllers
 
         [Route("mobil-yetki/{nobetUstGrupId:int:min(1)}")]
         [HttpGet]
-        public List<NobetUstGrupMobilUygulama> Get(int nobetUstGrupId)
+        public List<NobetUstGrupMobilUygulamaApi> Get(int nobetUstGrupId)
         {
-            return _nobetUstGrupMobilUygulamaService.GetListByNobetUstGrupId(nobetUstGrupId);
+            List<NobetUstGrupMobilUygulamaApi> listApi = new List<NobetUstGrupMobilUygulamaApi>();
+            List<NobetUstGrupMobilUygulama>  list = _nobetUstGrupMobilUygulamaService.GetListByNobetUstGrupId(nobetUstGrupId);
+            foreach (var item in list)
+            {
+                NobetUstGrupMobilUygulamaApi itemApi = new NobetUstGrupMobilUygulamaApi();
+                itemApi.Id = item.Id;
+                itemApi.MazeretEkleme = item.MazeretEkleme;
+                itemApi.MazeretSilme = item.MazeretSilme;
+                itemApi.NobetDegisimTalepEkleme = item.NobetDegisimTalepEkleme;
+                itemApi.NobetDegisimTalepGorme = item.NobetDegisimTalepGorme;
+                itemApi.NobetDegisimTalepSilme = item.NobetDegisimTalepSilme;
+                itemApi.OrtalamaIstatistikGorme = item.OrtalamaIstatistikGorme;
+                itemApi.NobetUstGrupId = item.NobetUstGrupId;
+                listApi.Add(itemApi);
+            }
+            return listApi;
         }
 
 

@@ -45,6 +45,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<NobetUstGrupKisit> NobetUstGrupKisitlar { get; set; }
         public DbSet<EczaneNobetFeragat> EczaneNobetFeragatlar { get; set; }
         public DbSet<EczaneNobetDegisim> EczaneNobetDegisimler { get; set; }
+        public DbSet<EczaneNobetDegisimTalep> EczaneNobetDegisimTalepler { get; set; }
 
         public DbSet<Sehir> Sehirler { get; set; }
         public DbSet<Ilce> Ilceler { get; set; }

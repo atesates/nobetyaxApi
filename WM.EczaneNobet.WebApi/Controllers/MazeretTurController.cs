@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WM.EczaneNobet.WebApi.Models;
 using WM.Northwind.Business.Abstract.Authorization;
 using WM.Northwind.Business.Abstract.EczaneNobet;
 using WM.Northwind.Entities.ComplexTypes.EczaneNobet;
@@ -25,10 +26,18 @@ namespace WM.EczaneNobet.WebApi.Controllers
 
         [Route("mazeret-turler")]
         [HttpGet]
-        public List<MazeretTur> Get()
+        public List<MazeretTurApi> Get()
         {
-            List<MazeretTur> list = _mazeretTurService.GetList().ToList();
-            return list;
+            List<MazeretTur> list = _mazeretTurService.GetList();
+            List<MazeretTurApi> listApi = new List<MazeretTurApi>();
+            foreach (var item in list)
+            {
+                MazeretTurApi itemApi = new MazeretTurApi();
+                itemApi.Id = item.Id;
+                itemApi.Adi = item.Adi;
+                listApi.Add(itemApi);
+            }
+            return listApi;
         }
 
 

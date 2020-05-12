@@ -71,9 +71,9 @@ namespace WM.Northwind.Business.Concrete.Managers.Authorization
             _nobetUstGrupMobilUygulamaDal.Delete(new NobetUstGrupMobilUygulama { Id = nobetUstGrupMobilUygulamaId });
         }
 
-        public List<NobetUstGrupMobilUygulama> GetListByNobetUstGrupId(int nobetUstGrupMobilUygulamaId)
+        public List<NobetUstGrupMobilUygulama> GetListByNobetUstGrupId(int nobetUstGrupId)
         {
-            return _nobetUstGrupMobilUygulamaDal.GetList(w => w.Id == nobetUstGrupMobilUygulamaId);
+            return _nobetUstGrupMobilUygulamaDal.GetList(w => w.NobetUstGrupId == nobetUstGrupId);
         }
 
     }

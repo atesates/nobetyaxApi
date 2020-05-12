@@ -43,7 +43,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.EczaneNobet
         {
             using (var ctx = new EczaneNobetContext())
             {
-                var liste = ctx.EczaneNobetDegisimler
+                var liste = ctx.EczaneNobetDegisimTalepler
                     .Select(s => new EczaneNobetDegisimTalepDetay
                     {
                         EczaneNobetSonucId = s.EczaneNobetSonucId,
