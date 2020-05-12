@@ -11,12 +11,12 @@ using WM.Northwind.Entities.Concrete.EczaneNobet;
 
 namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Mapping.EczaneNobet
 {
-    public class EczaneNobetDegisimMap : EntityTypeConfiguration<EczaneNobetDegisim>
+    public class EczaneNobetDegisimTalepMap : EntityTypeConfiguration<EczaneNobetDegisimTalep>
     {
-        public EczaneNobetDegisimMap()
+        public EczaneNobetDegisimTalepMap()
         {
             this.HasKey(t => t.Id);
-            this.ToTable("EczaneNobetDegisimler");
+            this.ToTable("EczaneNobetDegisimTalepler");
 
             #region columns
             this.Property(t => t.Id).HasColumnName("Id");
@@ -59,17 +59,17 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Mapping.EczaneNobet
 
             #region relationship
             this.HasRequired(t => t.EczaneNobetGrup)
-                        .WithMany(et => et.EczaneNobetDegisimler)
+                        .WithMany(et => et.EczaneNobetDegisimTalepler)
                         .HasForeignKey(t => t.EczaneNobetGrupId)
                         .WillCascadeOnDelete(false);
 
             this.HasRequired(t => t.EczaneNobetSonuc)
-                        .WithMany(et => et.EczaneNobetDegisimler)
+                        .WithMany(et => et.EczaneNobetDegisimTalepler)
                         .HasForeignKey(t => t.EczaneNobetSonucId)
                         .WillCascadeOnDelete(false);
 
             this.HasRequired(t => t.User)
-                        .WithMany(et => et.EczaneNobetDegisimler)
+                        .WithMany(et => et.EczaneNobetDegisimTalepler)
                         .HasForeignKey(t => t.UserId)
                         .WillCascadeOnDelete(false);
             #endregion

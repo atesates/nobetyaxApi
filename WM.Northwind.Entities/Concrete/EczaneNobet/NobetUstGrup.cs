@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WM.Core.Entities;
+using WM.Northwind.Entities.Concrete.Authorization;
 
 namespace WM.Northwind.Entities.Concrete.EczaneNobet
 {
@@ -38,6 +39,7 @@ namespace WM.Northwind.Entities.Concrete.EczaneNobet
         public virtual List<NobetUstGrupKisit> NobetUstGrupKisitlar { get; set; }
         public virtual List<NobetUstGrupGunGrup> NobetUstGrupGunGruplar { get; set; }
         public virtual List<Eczane> Eczaneler { get; set; }
+        public virtual List<NobetUstGrupMobilUygulama> NobetUstGrupMobilUygulamalar { get; set; }
         public virtual List<KalibrasyonTip> KalibrasyonTipler { get; set; }
         public virtual List<RaporNobetUstGrup>  RaporNobetUstGruplar { get; set; }
         //public virtual List<AyniGunTutulanNobet> AyniGunTutulanNobetler { get; set; }

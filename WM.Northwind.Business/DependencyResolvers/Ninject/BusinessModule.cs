@@ -45,6 +45,9 @@ namespace WM.BLL.DependencyResolvers.Ninject
             Bind<IUserRoleService>().To<UserRoleManager>().InSingletonScope();
             Bind<IUserRoleDal>().To<EfUserRoleDal>();
 
+            Bind<INobetUstGrupMobilUygulamaService>().To<NobetUstGrupMobilUygulamaManager>().InSingletonScope();
+            Bind<INobetUstGrupMobilUygulamaDal>().To<EfNobetUstGrupMobilUygulamaDal>();
+
             Bind<IMenuService>().To<MenuManager>().InSingletonScope();
             Bind<IMenuDal>().To<EfMenuDal>();
 
@@ -163,6 +166,9 @@ namespace WM.BLL.DependencyResolvers.Ninject
 
             Bind<IEczaneNobetDegisimService>().To<EczaneNobetDegisimManager>().InSingletonScope();
             Bind<IEczaneNobetDegisimDal>().To<EfEczaneNobetDegisimDal>();
+
+            Bind<IEczaneNobetDegisimTalepService>().To<EczaneNobetDegisimTalepManager>().InSingletonScope();
+            Bind<IEczaneNobetDegisimTalepDal>().To<EfEczaneNobetDegisimTalepDal>();
 
             Bind<IEczaneNobetFeragatService>().To<EczaneNobetFeragatManager>().InSingletonScope();
             Bind<IEczaneNobetFeragatDal>().To<EfEczaneNobetFeragatDal>();

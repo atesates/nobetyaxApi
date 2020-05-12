@@ -9,7 +9,7 @@ using WM.Northwind.Entities.Concrete.Authorization;
 
 namespace WM.Northwind.Entities.Concrete.EczaneNobet
 {
-    public class EczaneNobetDegisim : IEntity
+    public class EczaneNobetDegisimTalep : IEntity
     {
         public int Id { get; set; }
         public int EczaneNobetSonucId { get; set; }

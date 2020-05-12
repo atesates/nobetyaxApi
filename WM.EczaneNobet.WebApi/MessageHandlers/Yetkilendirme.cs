@@ -55,7 +55,7 @@ namespace WM.EczaneNobet.WebApi.MessageHandlers
             user = _userService.GetByEMailAndPassword(loginUser);
         }
 
-        public void YetkiKontrolu(EczaneNobetDegisimApi eczaneNobetDegisimApi, out LoginItem loginUser, out User user)
+        public void YetkiKontrolu(EczaneNobetDegisimTalepApi eczaneNobetDegisimApi, out LoginItem loginUser, out User user)
         {            
             user = _userService.GetById(eczaneNobetDegisimApi.UserId);
             loginUser = new LoginItem { Email = user.Email, Password = SHA256(user.Password), RememberMe = true };

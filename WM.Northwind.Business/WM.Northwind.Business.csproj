@@ -75,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\Authorization\INobetUstGrupMobilUygulamaService.cs" />
     <Compile Include="Abstract\Authorization\IUserRoleService.cs" />
     <Compile Include="Abstract\Authorization\IRoleService.cs" />
     <Compile Include="Abstract\Authorization\IUserService.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Abstract\EczaneNobet\IDebugEczaneService.cs" />
     <Compile Include="Abstract\EczaneNobet\IEczaneGorevTipService.cs" />
     <Compile Include="Abstract\EczaneNobet\IEczaneGrupTanimTipService.cs" />
+    <Compile Include="Abstract\EczaneNobet\IEczaneNobetDegisimTalepService.cs" />
     <Compile Include="Abstract\EczaneNobet\IEczaneNobetDegisimService.cs" />
     <Compile Include="Abstract\EczaneNobet\IEczaneNobetFeragatService.cs" />
     <Compile Include="Abstract\EczaneNobet\IEczaneNobetGrupAltGrupService.cs" />
@@ -181,6 +183,7 @@
     <Compile Include="Abstract\IProductService.cs" />
     <Compile Include="Abstract\Transport\ITransportService.cs" />
     <Compile Include="Concrete\Managers\AdminManager.cs" />
+    <Compile Include="Concrete\Managers\Authorization\NobetUstGrupMobilUygulamaManager.cs" />
     <Compile Include="Concrete\Managers\Authorization\UserRoleManager.cs" />
     <Compile Include="Concrete\Managers\Authorization\RoleManager.cs" />
     <Compile Include="Concrete\Managers\EczaneNobet\AyniGunNobetTakipGrupAltGrupManager.cs" />
@@ -191,6 +194,7 @@
     <Compile Include="Concrete\Managers\EczaneNobet\DebugEczaneManager.cs" />
     <Compile Include="Concrete\Managers\EczaneNobet\EczaneGorevTipManager.cs" />
     <Compile Include="Concrete\Managers\EczaneNobet\EczaneGrupTanimTipManager.cs" />
+    <Compile Include="Concrete\Managers\EczaneNobet\EczaneNobetDegisimTalepManager.cs" />
     <Compile Include="Concrete\Managers\EczaneNobet\EczaneNobetDegisimManager.cs" />
     <Compile Include="Concrete\Managers\EczaneNobet\EczaneNobetFeragatManager.cs" />
     <Compile Include="Concrete\Managers\EczaneNobet\EczaneNobetGrupAltGrupManager.cs" />

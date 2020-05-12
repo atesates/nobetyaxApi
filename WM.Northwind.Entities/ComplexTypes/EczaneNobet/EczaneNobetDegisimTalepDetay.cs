@@ -10,7 +10,7 @@ using WM.Northwind.Entities.Concrete.EczaneNobet;
 
 namespace WM.Northwind.Entities.ComplexTypes.EczaneNobet
 {
-    public class EczaneNobetDegisimDetay : IComplexType
+    public class EczaneNobetDegisimTalepDetay : IComplexType
     {
         public int Id { get; set; }
         public int EczaneNobetSonucId { get; set; }
@@ -27,6 +27,7 @@ namespace WM.Northwind.Entities.ComplexTypes.EczaneNobet
         public DateTime NobetTarihi { get; set; }
         [Display(Name = "Açıklama")]
         public string Aciklama { get; set; }
+        public bool Onay { get; set; }
         public string Kaydeden { get; set; }
         [Display(Name = "Nöbet Grubu")]
         public string NobetGrupAdi { get; set; }

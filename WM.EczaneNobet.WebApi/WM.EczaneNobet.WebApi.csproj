@@ -140,7 +140,7 @@
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\EczaneNobetDegisimController.cs" />
+    <Compile Include="Controllers\EczaneNobetDegisimTalepController.cs" />
     <Compile Include="Controllers\EczaneNobetMazeretlerController.cs" />
     <Compile Include="Controllers\EczaneNobetSonuclarController.cs" />
     <Compile Include="Controllers\EkranlarController.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Controllers\UserEczaneController.cs" />
     <Compile Include="Controllers\UserEczaneOdaController.cs" />
     <Compile Include="Controllers\UserNobetUstGrupController.cs" />
+    <Compile Include="Controllers\NobetUstGrupMobilUygulamaController.cs" />
     <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -158,7 +159,7 @@
     <Compile Include="MessageHandlers\AuthenticationHandler.cs" />
     <Compile Include="MessageHandlers\Yetkilendirme.cs" />
     <Compile Include="Models\EczaneApi.cs" />
-    <Compile Include="Models\EczaneNobetDegisimApi.cs" />
+    <Compile Include="Models\EczaneNobetDegisimTalepApi.cs" />
     <Compile Include="Models\EczaneNobetMazeretApi.cs" />
     <Compile Include="Models\EczaneNobetMazeretCokluApi.cs" />
     <Compile Include="Models\EczaneNobetSonucApi.cs" />

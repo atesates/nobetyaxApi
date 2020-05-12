@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WM.EczaneNobet.WebApi.Models
 {
-    public class EczaneNobetDegisimApi
+    public class EczaneNobetDegisimTalepApi
     {
         public int Id { get; set; }
         public int MyEczaneNobetGrupId { get; set; }
@@ -13,7 +13,6 @@ namespace WM.EczaneNobet.WebApi.Models
         public int UserId { get; set; }
         public string Aciklama { get; set; }
         public string Token { get; set; }
-        public bool Onay { get; set; }
         public DateTime Tarih { get; set; }
 
     }
