@@ -13,14 +13,14 @@ using WM.Northwind.Entities.Concrete.EczaneNobet;
 
 namespace WM.Northwind.DataAccess.Concrete.EntityFramework.EczaneNobet
 {
-    public class EfEczaneNobetDegisimTalepDal : EfEntityRepositoryBase<EczaneNobetDegisimTalep, EczaneNobetContext>, IEczaneNobetDegisimTalepDal
+    public class EfEczaneNobetDegisimArzDal : EfEntityRepositoryBase<EczaneNobetDegisimArz, EczaneNobetContext>, IEczaneNobetDegisimArzDal
     {
-        public EczaneNobetDegisimTalepDetay GetDetay(Expression<Func<EczaneNobetDegisimTalepDetay, bool>> filter)
+        public EczaneNobetDegisimArzDetay GetDetay(Expression<Func<EczaneNobetDegisimArzDetay, bool>> filter)
         {
             using (var ctx = new EczaneNobetContext())
             {
-                return ctx.EczaneNobetDegisimTalepler
-                    .Select(s => new EczaneNobetDegisimTalepDetay
+                return ctx.EczaneNobetDegisimArzlar
+                    .Select(s => new EczaneNobetDegisimArzDetay
                     {
                         EczaneNobetSonucId = s.EczaneNobetSonucId,
                         EczaneNobetGrupId = s.EczaneNobetGrupId,
@@ -31,19 +31,19 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.EczaneNobet
                     }).SingleOrDefault(filter);
             }
         }
-        public List<EczaneNobetDegisimTalepDetay> GetDetayList(Expression<Func<EczaneNobetDegisimTalepDetay, bool>> filter = null)
+        public List<EczaneNobetDegisimArzDetay> GetDetayList(Expression<Func<EczaneNobetDegisimArzDetay, bool>> filter = null)
         {
             using (var ctx = new EczaneNobetContext())
             {
-                var liste = ctx.EczaneNobetDegisimTalepler
-                    .Select(s => new EczaneNobetDegisimTalepDetay
+                var liste = ctx.EczaneNobetDegisimArzlar
+                    .Select(s => new EczaneNobetDegisimArzDetay
                     {
                         EczaneNobetSonucId = s.EczaneNobetSonucId,
                         EczaneNobetGrupId = s.EczaneNobetGrupId,
                         UserId = s.UserId,
                         Id = s.Id,
-                        KayitTarihi = s.KayitTarihi,
-                        
+                        KayitTarihi = s.KayitTarihi
+
                     });
 
                 return filter == null

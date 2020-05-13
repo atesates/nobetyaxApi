@@ -24,6 +24,7 @@ namespace WM.Northwind.Entities.Concrete.EczaneNobet
         //Aciklamada nöbet grubu değişikliğinin gerekçesi belirtilecektir.
         [Display(Name = "Açıklama")]
         public string Aciklama { get; set; }
+        public string WebSitesi { get; set; }
 
         public int TimeLimit { get; set; }
         public double Enlem { get; set; }
@@ -39,9 +40,9 @@ namespace WM.Northwind.Entities.Concrete.EczaneNobet
         public virtual List<NobetUstGrupKisit> NobetUstGrupKisitlar { get; set; }
         public virtual List<NobetUstGrupGunGrup> NobetUstGrupGunGruplar { get; set; }
         public virtual List<Eczane> Eczaneler { get; set; }
-        public virtual List<NobetUstGrupMobilUygulama> NobetUstGrupMobilUygulamalar { get; set; }
         public virtual List<KalibrasyonTip> KalibrasyonTipler { get; set; }
         public virtual List<RaporNobetUstGrup>  RaporNobetUstGruplar { get; set; }
+        public virtual List<NobetUstGrupMobilUygulamaYetki> NobetUstGrupMobilUygulamaYetkiler { get; set; }
         //public virtual List<AyniGunTutulanNobet> AyniGunTutulanNobetler { get; set; }
 
     }

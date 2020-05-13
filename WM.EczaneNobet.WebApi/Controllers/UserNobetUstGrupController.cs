@@ -65,5 +65,18 @@ namespace WM.EczaneNobet.WebApi.Controllers
             NobetUstGrup nobetUstGrup = _eczaneService.GetByEczaneNobetGrupId(eczaneNobetGrupId);
             return nobetUstGrup.Id;
         }
+
+
+        [Route("web-sitesi/{userId:int:min(1)}")]
+        [HttpGet]
+        public string GetWebSitesi(int userId)
+        {
+            //User user = _userService.GetById(userId);
+            //user = _userService.GetById(userId);
+            int eczaneId = _userEczaneService.GetListByUserId(userId).Select(s => s.EczaneId).FirstOrDefault();
+            int eczaneNobetGrupId = _eczaneNobetGrupService.GetDetayByEczaneId(eczaneId).Id;
+            NobetUstGrup nobetUstGrup = _eczaneService.GetByEczaneNobetGrupId(eczaneNobetGrupId);
+            return nobetUstGrup.WebSitesi;
+        }
     }
 }

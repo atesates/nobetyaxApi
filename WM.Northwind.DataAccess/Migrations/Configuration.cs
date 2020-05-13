@@ -20,9 +20,9 @@ namespace WM.Northwind.DataAccess.Migrations
         public Configuration()
         {
             //veri tabanýnda deðiþikliðe izin vermek için istendiði zaman true olacak.
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             //alan silineceði zaman true olacak. silmede veri kaybýný önlemek için false 
-            AutomaticMigrationDataLossAllowed = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(WM.Northwind.DataAccess.Concrete.EntityFramework.Contexts.EczaneNobetContext context)

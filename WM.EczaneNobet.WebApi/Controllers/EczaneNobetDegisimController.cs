@@ -70,7 +70,8 @@ namespace WM.EczaneNobet.WebApi.Controllers
             eczaneNobetGrup = _eczaneNobetGrupService.GetById(eczaneNobetGrupId);
             return _eczaneNobetDegisimService.GetDetaylar(nobetUstGrup.Id)
                 .Where(w => w.NobetGrupId == eczaneNobetGrup.NobetGrupGorevTipId
-                && w.NobetTarihi > DateTime.Now).ToList();
+                //&& w.NobetTarihi > DateTime.Now
+                ).ToList();
         }
 
 

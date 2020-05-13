@@ -17,7 +17,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Contexts
             //Database.SetInitializer(new EczaneNobetInitializerAlanya());
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EczaneNobetContext>());
 
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<EczaneNobetContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EczaneNobetContext, Configuration>());
         }
 
         public EczaneNobetContext() : base("Name=EczaneNobetContext")
@@ -45,8 +45,11 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<NobetUstGrupKisit> NobetUstGrupKisitlar { get; set; }
         public DbSet<EczaneNobetFeragat> EczaneNobetFeragatlar { get; set; }
         public DbSet<EczaneNobetDegisim> EczaneNobetDegisimler { get; set; }
+        public DbSet<EczaneNobetDegisimArz> EczaneNobetDegisimArzlar { get; set; }
         public DbSet<EczaneNobetDegisimTalep> EczaneNobetDegisimTalepler { get; set; }
-
+        public DbSet<NobetUstGrupMobilUygulamaYetki> NobetUstGrupMobilUygulamaYetkiler { get; set; }
+        public DbSet<MobilUygulamaYetki> MobilUygulamaYetkiler { get; set; }
+        
         public DbSet<Sehir> Sehirler { get; set; }
         public DbSet<Ilce> Ilceler { get; set; }
         public DbSet<EczaneIlce> EczaneIlceler { get; set; }

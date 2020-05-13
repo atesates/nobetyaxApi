@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="ComplexTypes\EczaneNobet\DebugEczaneDetay.cs" />
     <Compile Include="ComplexTypes\EczaneNobet\EczaneGrupTanimSayisi.cs" />
+    <Compile Include="ComplexTypes\EczaneNobet\EczaneNobetDegisimArzDetay.cs" />
     <Compile Include="ComplexTypes\EczaneNobet\EczaneNobetDegisimTalepDetay.cs" />
     <Compile Include="ComplexTypes\EczaneNobet\EczaneNobetSonucMobilUygulama.cs" />
     <Compile Include="ComplexTypes\EczaneNobet\NobetciEczaneMesafe.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="ComplexTypes\EczaneNobet\EczaneNobetSanalSonucEkle.cs" />
     <Compile Include="ComplexTypes\EczaneNobet\EczaneNobetSonucEkle.cs" />
     <Compile Include="ComplexTypes\EczaneNobet\MyDropSonuclar.cs" />
+    <Compile Include="ComplexTypes\EczaneNobet\NobetUstGrupMobilUygulamaYetkiDetay.cs" />
     <Compile Include="ComplexTypes\EczaneNobet\TakvimNobetGrupGunGrupIstatistik.cs" />
     <Compile Include="ComplexTypes\EditUser.cs" />
     <Compile Include="ComplexTypes\CategoryNbProduct.cs" />
@@ -213,7 +215,6 @@
     <Compile Include="ComplexTypes\Transport\TransportSonucEdges.cs" />
     <Compile Include="ComplexTypes\Transport\TransportSonucNodes.cs" />
     <Compile Include="Concrete\Authorization\Role.cs" />
-    <Compile Include="Concrete\Authorization\NobetUstGrupMobilUygulama.cs" />
     <Compile Include="Concrete\Authorization\UserRole.cs" />
     <Compile Include="Concrete\Authorization\User.cs" />
     <Compile Include="Concrete\EczaneNobet\AyniGunNobetTakipGrupAltGrup.cs" />
@@ -222,11 +223,14 @@
     <Compile Include="Concrete\EczaneNobet\DebugEczane.cs" />
     <Compile Include="Concrete\EczaneNobet\EczaneGorevTip.cs" />
     <Compile Include="Concrete\EczaneNobet\EczaneGrupTanimTip.cs" />
-    <Compile Include="Concrete\EczaneNobet\EczaneNobetDegisimTalep.cs" />
     <Compile Include="Concrete\EczaneNobet\EczaneNobetDegisim.cs" />
+    <Compile Include="Concrete\EczaneNobet\EczaneNobetDegisimArz.cs" />
+    <Compile Include="Concrete\EczaneNobet\EczaneNobetDegisimTalep.cs" />
     <Compile Include="Concrete\EczaneNobet\EczaneNobetFeragat.cs" />
     <Compile Include="Concrete\EczaneNobet\EczaneNobetIstek.cs" />
     <Compile Include="Concrete\EczaneNobet\EczaneNobetSanalSonuc.cs" />
+    <Compile Include="Concrete\EczaneNobet\MobilUygulamaYetki.cs" />
+    <Compile Include="Concrete\EczaneNobet\NobetUstGrupMobilUygulamaYetki.cs" />
     <Compile Include="Concrete\EczaneNobet\Rapor.cs" />
     <Compile Include="Concrete\EczaneNobet\RaporKategori.cs" />
     <Compile Include="Concrete\EczaneNobet\EczaneNobetSonucDemo.cs" />
