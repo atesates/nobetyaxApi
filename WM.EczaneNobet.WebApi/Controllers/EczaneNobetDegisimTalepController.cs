@@ -15,10 +15,10 @@ using WM.Northwind.Entities.Concrete.EczaneNobet;
 
 namespace WM.EczaneNobet.WebApi.Controllers
 {
-    public class EczaneNobetDegisimArzController : ApiController
+    public class EczaneNobetDegisimTalepController : ApiController
     {
         #region ctor
-        private IEczaneNobetDegisimArzService _eczaneNobetDegisimArzService;
+        private IEczaneNobetDegisimTalepService _eczaneNobetDegisimTalepService;
         private IUserEczaneService _userEczaneService;
         private IEczaneService _eczaneService;
         private IUserService _userService;
@@ -30,7 +30,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
         private IUserRoleService _userRoleService;
         Yetkilendirme _yetkilendirme;
 
-        public EczaneNobetDegisimArzController(IEczaneNobetDegisimArzService EczaneNobetDegisimArzService,
+        public EczaneNobetDegisimTalepController(IEczaneNobetDegisimTalepService eczaneNobetDegisimTalepService,
                                                 IEczaneService eczaneService,
                                                 IUserEczaneService userEczaneService,
                                                 IUserService userService,
@@ -41,7 +41,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
                                                 IEczaneNobetGrupService eczaneNobetGrupService,
                                 IUserRoleService userRoleService)
         {
-            _eczaneNobetDegisimArzService = EczaneNobetDegisimArzService;
+            _eczaneNobetDegisimTalepService = eczaneNobetDegisimTalepService;
             _eczaneService = eczaneService;
             _userEczaneService = userEczaneService;
             _userService = userService;
@@ -57,9 +57,9 @@ namespace WM.EczaneNobet.WebApi.Controllers
         #endregion
 
 
-        [Route("eczane-nobet-degisim-Arzler-hepsi/{userId:int:min(1)}")]
+        [Route("eczane-nobet-degisim-talepler-hepsi/{userId:int:min(1)}")]
         [HttpGet]
-        public List<EczaneNobetDegisimArzDetay> Get(int userId)
+        public List<EczaneNobetDegisimTalepDetay> Get(int userId)
         {
             User user = _userService.GetById(userId);
             NobetUstGrup nobetUstGrup = _nobetUstGrupService.GetListByUser(user).FirstOrDefault();
@@ -68,43 +68,69 @@ namespace WM.EczaneNobet.WebApi.Controllers
             int eczaneNobetGrupId = _eczaneNobetGrupService.GetDetayByEczaneId(eczaneId).Id;
             EczaneNobetGrup eczaneNobetGrup = new EczaneNobetGrup();
             eczaneNobetGrup = _eczaneNobetGrupService.GetById(eczaneNobetGrupId);
-            return _eczaneNobetDegisimArzService.GetDetaylar(nobetUstGrup.Id)
+            return _eczaneNobetDegisimTalepService.GetDetaylar(nobetUstGrup.Id)
                 .Where(w => w.NobetGrupId == eczaneNobetGrup.NobetGrupGorevTipId
                 //&& w.NobetTarihi > DateTime.Now
                 ).ToList();
         }
 
+        [Route("eczane-nobet-degisim-talepler-tarihli")]
+        [HttpPost]
+        public HttpResponseMessage GetNobetDegisimTalep([FromBody]EczaneNobetDegisimTalepApi eczaneNobetDegisimTalepApi)
+        {
+            try
+            {
+                DateTime dt_tarihi = Convert.ToDateTime(eczaneNobetDegisimTalepApi.Tarih);
+                Takvim takvim = _takvimService.GetByTarih(dt_tarihi);
+                User User = _userService.GetById(eczaneNobetDegisimTalepApi.UserId);
+                NobetUstGrup nobetUstGrup = _nobetUstGrupService.GetListByUser(User).FirstOrDefault();
+                EczaneNobetGrup eczaneNobetGrup = new EczaneNobetGrup();
+                eczaneNobetGrup = _eczaneNobetGrupService.GetById(eczaneNobetDegisimTalepApi.EczaneNobetGrupId);
+                List<EczaneNobetDegisimTalepDetay> eczaneNobetDegisimTalepDetayList = new List<EczaneNobetDegisimTalepDetay>();
+                eczaneNobetDegisimTalepDetayList = _eczaneNobetDegisimTalepService.GetDetaylar(nobetUstGrup.Id)
+                 .Where(w => w.NobetTarihi == dt_tarihi
+                    && w.NobetGrupId == eczaneNobetGrup.NobetGrupGorevTipId
+                    && w.NobetTarihi > DateTime.Now
+                    //&& w.Onay == false
+                    )
+                 .ToList();
+                return Request.CreateResponse(HttpStatusCode.OK, eczaneNobetDegisimTalepDetayList);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, e.Message + e.InnerException.StackTrace);
+            }
+        }
 
 
-       
         //[Route("degisim-ekle/{eczaneNobetGrupId:int:min(1)}/{tarih:maxlength(200)}/{aciklama:maxlength(200)}/{mazeretId:int:min(1)}")]
         // üstteki şekilde olursa FromUri olacak aşağıda
 
-        [Route("degisim-Arz-ekle")]
+        [Route("degisim-talep-ekle")]
         [HttpPost]
-        public HttpResponseMessage EczaneNobetDegisimArzTalebiEkle([FromBody]EczaneNobetDegisimArzApi eczaneNobetDegisimArzApi)
+        public HttpResponseMessage EczaneNobetDegisimTalepTalebiEkle([FromBody]EczaneNobetDegisimTalepApi eczaneNobetDegisimTalepApi)
         {
             LoginItem loginUser;
             User user;
-            _yetkilendirme.YetkiKontrolu(eczaneNobetDegisimArzApi, out loginUser, out user);
+            _yetkilendirme.YetkiKontrolu(eczaneNobetDegisimTalepApi, out loginUser, out user);
             string token = _yetkilendirme.GetToken2(loginUser);
 
             if (user != null)
             {
-                if (token == eczaneNobetDegisimArzApi.Token)
+                if (token == eczaneNobetDegisimTalepApi.Token)
                 {
                     try
                     {
-                        Takvim takvim = _takvimService.GetByTarih(Convert.ToDateTime(eczaneNobetDegisimArzApi.Tarih));
-                        EczaneNobetDegisimArz eczaneNobetDegisimArz = new EczaneNobetDegisimArz();
-                        int eczaneNobetSonucId = _eczaneNobetSonucService.GetDetay2ById(eczaneNobetDegisimArzApi.EczaneNobetSonucId).Id;
-                        eczaneNobetDegisimArz.EczaneNobetSonucId = eczaneNobetSonucId;
-                        eczaneNobetDegisimArz.EczaneNobetGrupId = eczaneNobetDegisimArzApi.EczaneNobetGrupId;
-                        eczaneNobetDegisimArz.Aciklama = eczaneNobetDegisimArzApi.Aciklama;
-                        eczaneNobetDegisimArz.KayitTarihi = DateTime.Now;
-                        eczaneNobetDegisimArz.UserId = eczaneNobetDegisimArzApi.UserId;
-                        _eczaneNobetDegisimArzService.Insert(eczaneNobetDegisimArz);
-                        return Request.CreateResponse(HttpStatusCode.OK, eczaneNobetDegisimArz);
+                        Takvim takvim = _takvimService.GetByTarih(Convert.ToDateTime(eczaneNobetDegisimTalepApi.Tarih));
+                        EczaneNobetDegisimTalep eczaneNobetDegisimTalep = new EczaneNobetDegisimTalep();
+                        int eczaneNobetSonucId = _eczaneNobetSonucService.GetDetay2ById(eczaneNobetDegisimTalepApi.EczaneNobetSonucId).Id;
+                        eczaneNobetDegisimTalep.EczaneNobetSonucId = eczaneNobetSonucId;
+                        eczaneNobetDegisimTalep.EczaneNobetGrupId = eczaneNobetDegisimTalepApi.EczaneNobetGrupId;
+                        eczaneNobetDegisimTalep.Aciklama = eczaneNobetDegisimTalepApi.Aciklama;
+                        eczaneNobetDegisimTalep.KayitTarihi = DateTime.Now;
+                        eczaneNobetDegisimTalep.UserId = eczaneNobetDegisimTalepApi.UserId;
+                        _eczaneNobetDegisimTalepService.Insert(eczaneNobetDegisimTalep);
+                        return Request.CreateResponse(HttpStatusCode.OK, eczaneNobetDegisimTalep);
                     }
                     catch (Exception e)
                     {
@@ -126,22 +152,22 @@ namespace WM.EczaneNobet.WebApi.Controllers
 
 
       
-        [Route("degisim-Arz-sil")]
+        [Route("degisim-talep-sil")]
         [HttpPost]
-        public HttpResponseMessage EczaneNobetDegisimArzTalebiSil([FromBody]EczaneNobetDegisimArzApi eczaneNobetDegisimArzApi)
+        public HttpResponseMessage EczaneNobetDegisimTalepTalebiSil([FromBody]EczaneNobetDegisimTalepApi eczaneNobetDegisimTalepApi)
         {
             LoginItem loginUser;
             User user;
-            _yetkilendirme.YetkiKontrolu(eczaneNobetDegisimArzApi, out loginUser, out user);
+            _yetkilendirme.YetkiKontrolu(eczaneNobetDegisimTalepApi, out loginUser, out user);
             string token = _yetkilendirme.GetToken2(loginUser);
 
             if (user != null)
             {
-                if (token == eczaneNobetDegisimArzApi.Token)
+                if (token == eczaneNobetDegisimTalepApi.Token)
                 {
                     try
                     {
-                        _eczaneNobetDegisimArzService.Delete(eczaneNobetDegisimArzApi.Id);
+                        _eczaneNobetDegisimTalepService.Delete(eczaneNobetDegisimTalepApi.Id);
                         return Request.CreateResponse(HttpStatusCode.OK);
                     }
                     catch (Exception e)
