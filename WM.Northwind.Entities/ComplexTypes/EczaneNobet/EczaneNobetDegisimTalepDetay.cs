@@ -21,6 +21,17 @@ namespace WM.Northwind.Entities.ComplexTypes.EczaneNobet
         public string EczaneNobetSonucAdi { get; set; }
         public string EczaneNobetGrupAdi { get; set; }
         public string UserAdi { get; set; }
+        public int NobetGrupId { get; set; }
+        public int EczaneId { get; set; }
+        public int NobetUstGrupId { get; set; }
+
+        [Display(Name = "Nöbet Tarihi")]
+        public DateTime NobetTarihi { get; set; }
+        public string Kaydeden { get; set; }
+        [Display(Name = "Nöbet Grubu")]
+        public string NobetGrupAdi { get; set; }
+        [Display(Name = "Yeni Nöbetçi")]
+        public string EczaneAdi { get; set; }
 
     } 
 } 

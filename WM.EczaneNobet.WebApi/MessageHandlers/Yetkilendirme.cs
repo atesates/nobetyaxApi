@@ -62,6 +62,13 @@ namespace WM.EczaneNobet.WebApi.MessageHandlers
             //user = _userService.GetByEMailAndPassword(loginUser);
             
         }
+        public void YetkiKontrolu(EczaneNobetDegisimArzApi eczaneNobetDegisimTArzApi, out LoginItem loginUser, out User user)
+        {
+            user = _userService.GetById(eczaneNobetDegisimTArzApi.UserId);
+            loginUser = new LoginItem { Email = user.Email, Password = SHA256(user.Password), RememberMe = true };
+            //user = _userService.GetByEMailAndPassword(loginUser);
+
+        }
         public void YetkiKontrolu(EczaneNobetDegisimApi eczaneNobetDegisimApi, out LoginItem loginUser, out User user)
         {
             user = _userService.GetById(eczaneNobetDegisimApi.UserId);

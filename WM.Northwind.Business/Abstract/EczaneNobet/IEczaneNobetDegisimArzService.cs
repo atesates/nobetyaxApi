@@ -19,5 +19,7 @@ namespace WM.Northwind.Business.Abstract.EczaneNobet
         void Delete(int eczaneNobetDegisimArzId);
         EczaneNobetDegisimArzDetay GetDetayById(int eczaneNobetDegisimArzId);
         List <EczaneNobetDegisimArzDetay> GetDetaylar();
+        List<EczaneNobetDegisimArzDetay> GetDetaylar(int nobetUstGrupId);
+
     }
 } 

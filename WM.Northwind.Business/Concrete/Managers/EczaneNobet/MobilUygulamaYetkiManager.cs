@@ -48,7 +48,8 @@ namespace WM.Northwind.Business.Concrete.Managers.EczaneNobet
         {
             _mobilUygulamaYetkiDal.Update(mobilUygulamaYetki);
         }
-                        
+
+      
 
     } 
 }

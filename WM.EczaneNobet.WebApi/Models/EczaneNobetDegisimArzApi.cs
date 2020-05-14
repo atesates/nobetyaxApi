@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WM.EczaneNobet.WebApi.Models
 {
-    public class EczaneNobetDegisimTalepApi
+    public class EczaneNobetDegisimArzApi
     {
         public int Id { get; set; }
         public int EczaneNobetSonucId { get; set; }
