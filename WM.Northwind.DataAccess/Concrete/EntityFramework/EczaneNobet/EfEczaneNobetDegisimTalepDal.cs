@@ -34,7 +34,8 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.EczaneNobet
                         Id = s.Id,
                         KayitTarihi = s.KayitTarihi,
                         NobetTarihi = s.EczaneNobetSonuc.Takvim.Tarih,
-                        NobetUstGrupId = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.NobetUstGrupId
+                        NobetUstGrupId = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.NobetUstGrupId,
+                        //EczaneNobetDegisimArzId = s.EczaneNobetDegisimArzId
 
                     }).SingleOrDefault(filter);
             }
@@ -58,7 +59,8 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.EczaneNobet
                         Id = s.Id,
                         KayitTarihi = s.KayitTarihi,
                         NobetTarihi = s.EczaneNobetSonuc.Takvim.Tarih,
-                        NobetUstGrupId = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.NobetUstGrupId
+                        NobetUstGrupId = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.NobetUstGrupId,
+                        //EczaneNobetDegisimArzId = s.EczaneNobetDegisimArzId
 
                     });
 

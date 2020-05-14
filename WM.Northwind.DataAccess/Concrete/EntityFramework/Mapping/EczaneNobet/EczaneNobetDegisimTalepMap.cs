@@ -20,11 +20,12 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Mapping.EczaneNobet
 
             #region columns
             this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.EczaneNobetSonucId).HasColumnName("EczaneNobetSonucId");
+            //this.Property(t => t.EczaneNobetSonucId).HasColumnName("EczaneNobetSonucId");
             this.Property(t => t.EczaneNobetGrupId).HasColumnName("EczaneNobetGrupId");
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.KayitTarihi).HasColumnName("KayitTarihi");
             this.Property(t => t.Aciklama).HasColumnName("Aciklama");
+            this.Property(t => t.EczaneNobetSonucId).HasColumnName("EczaneNobetSonucId");
             #endregion
 
             #region properties
@@ -32,6 +33,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Mapping.EczaneNobet
                         .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity); 
             this.Property(t => t.Id).IsRequired();
             this.Property(t => t.EczaneNobetSonucId).IsRequired();
+            //this.Property(t => t.EczaneNobetSonucId).IsRequired();
             this.Property(t => t.EczaneNobetGrupId).IsRequired();
             this.Property(t => t.UserId).IsRequired();
             this.Property(t => t.KayitTarihi).IsRequired();
@@ -46,8 +48,12 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Mapping.EczaneNobet
                         .WillCascadeOnDelete(false);
             this.HasRequired(t => t.EczaneNobetSonuc)
                         .WithMany(et => et.EczaneNobetDegisimTalepler)
-                        .HasForeignKey(t =>t.EczaneNobetSonucId)
+                        .HasForeignKey(t => t.EczaneNobetSonucId)
                         .WillCascadeOnDelete(false);
+            //this.HasRequired(t => t.EczaneNobetDegisimArz)
+            //           .WithMany(et => et.EczaneNobetDegisimTalepler)
+            //           .HasForeignKey(t => t.EczaneNobetDegisimArzId)
+            //           .WillCascadeOnDelete(false);
             this.HasRequired(t => t.User)
                         .WithMany(et => et.EczaneNobetDegisimTalepler)
                         .HasForeignKey(t => t.UserId)

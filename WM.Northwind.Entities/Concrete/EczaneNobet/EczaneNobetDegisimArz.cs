@@ -21,6 +21,7 @@ namespace WM.Northwind.Entities.Concrete.EczaneNobet
         public virtual EczaneNobetGrup EczaneNobetGrup { get; set; }
         public virtual User User { get; set; }
 
+        //public virtual List<EczaneNobetDegisimTalep> EczaneNobetDegisimTalepler { get; set; }
         public virtual EczaneNobetSonuc EczaneNobetSonuc { get; set; }
 
     }

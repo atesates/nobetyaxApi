@@ -123,9 +123,10 @@ namespace WM.EczaneNobet.WebApi.Controllers
                     {
                         Takvim takvim = _takvimService.GetByTarih(Convert.ToDateTime(eczaneNobetDegisimTalepApi.Tarih));
                         EczaneNobetDegisimTalep eczaneNobetDegisimTalep = new EczaneNobetDegisimTalep();
-                        int eczaneNobetSonucId = _eczaneNobetSonucService.GetDetay2ById(eczaneNobetDegisimTalepApi.EczaneNobetSonucId).Id;
+                        int eczaneNobetSonucId = _eczaneNobetSonucService.GetDetay(takvim.Id, eczaneNobetDegisimTalepApi.EczaneNobetGrupId).Id;
                         eczaneNobetDegisimTalep.EczaneNobetSonucId = eczaneNobetSonucId;
-                        eczaneNobetDegisimTalep.EczaneNobetGrupId = eczaneNobetDegisimTalepApi.EczaneNobetGrupId;
+                        //eczaneNobetDegisimTalep.EczaneNobetSonucId = eczaneNobetSonucId;
+                        eczaneNobetDegisimTalep.EczaneNobetGrupId = eczaneNobetDegisimTalepApi.MyEczaneNobetGrupId;
                         eczaneNobetDegisimTalep.Aciklama = eczaneNobetDegisimTalepApi.Aciklama;
                         eczaneNobetDegisimTalep.KayitTarihi = DateTime.Now;
                         eczaneNobetDegisimTalep.UserId = eczaneNobetDegisimTalepApi.UserId;
