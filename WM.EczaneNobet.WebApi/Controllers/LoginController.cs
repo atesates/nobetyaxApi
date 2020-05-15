@@ -52,6 +52,18 @@ namespace WM.EczaneNobet.WebApi.Controllers
 
         }
 
+        [Route("bildirim-test-get")]
+        //[Route("login/{eMail:maxlength(100)}/{password:maxlength(100)}")]
+        [HttpGet]
+        public HttpResponseMessage GetBildirimTest()//([FromUri]string eMail, [FromUri]string password)
+        {
+            PushNotification pushNotification = new PushNotification("kan ihtiyacı",
+                 "Duyuru",
+                 "cxzrXvNdTCk:APA91bG51xqnymrAW_BuHSJGUTQOZbv-4Mn_LD7hQCHQrzn2j_uNFltw86l3XMpUXnURr7GktU-_bOGWAeuq-qvTXopG1codEEmcotNBsbfwBH3nP705hOziudxWHPhOp_lFytyMzBhw");
+            return Request.CreateResponse(HttpStatusCode.OK);
+
+        }
+
         [Route("login")]
         //[Route("login/{eMail:maxlength(100)}/{password:maxlength(100)}")]
         [HttpPost]
@@ -68,7 +80,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
                 UserRoleDetayList = _userRoleService.GetDetayListByUserId(user.Id).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, "UserId:" + UserRoleDetayList[0].UserId
                     + ",Token:" + token
-                    + ",DeviceId:" + UserRoleDetayList[0].DeviceID
+                    + ",DeviceID:" + UserRoleDetayList[0].DeviceID
                     + ",Password:" + user.Password);
             }
             else
@@ -96,7 +108,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
                 UserRoleDetayList = _userRoleService.GetDetayListByUserId(user.Id).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, "UserId:" + UserRoleDetayList[0].UserId
                     + ",Token:" + token
-                    + ",DeviceId:" + UserRoleDetayList[0].DeviceID
+                    + ",DeviceID:" + UserRoleDetayList[0].DeviceID
                     + ",Password:" + user.Password);
             }
             else
