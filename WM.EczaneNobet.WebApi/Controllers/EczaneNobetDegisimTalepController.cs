@@ -19,6 +19,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
     {
         #region ctor
         private IEczaneNobetDegisimTalepService _eczaneNobetDegisimTalepService;
+        private IEczaneNobetDegisimArzService _eczaneNobetDegisimArzService;
         private IUserEczaneService _userEczaneService;
         private IEczaneService _eczaneService;
         private IUserService _userService;
@@ -31,6 +32,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
         Yetkilendirme _yetkilendirme;
 
         public EczaneNobetDegisimTalepController(IEczaneNobetDegisimTalepService eczaneNobetDegisimTalepService,
+            IEczaneNobetDegisimArzService eczaneNobetDegisimArzService,
                                                 IEczaneService eczaneService,
                                                 IUserEczaneService userEczaneService,
                                                 IUserService userService,
@@ -42,6 +44,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
                                 IUserRoleService userRoleService)
         {
             _eczaneNobetDegisimTalepService = eczaneNobetDegisimTalepService;
+            _eczaneNobetDegisimArzService = eczaneNobetDegisimArzService;
             _eczaneService = eczaneService;
             _userEczaneService = userEczaneService;
             _userService = userService;
@@ -123,9 +126,12 @@ namespace WM.EczaneNobet.WebApi.Controllers
                     {
                         Takvim takvim = _takvimService.GetByTarih(Convert.ToDateTime(eczaneNobetDegisimTalepApi.Tarih));
                         EczaneNobetDegisimTalep eczaneNobetDegisimTalep = new EczaneNobetDegisimTalep();
+                        List<EczaneNobetDegisimArzDetay> eczaneNobetDegisimArzDetaylar = new List<EczaneNobetDegisimArzDetay>();
                         int eczaneNobetSonucId = _eczaneNobetSonucService.GetDetay(takvim.Id, eczaneNobetDegisimTalepApi.EczaneNobetGrupId).Id;
-                        eczaneNobetDegisimTalep.EczaneNobetSonucId = eczaneNobetSonucId;
-                        //eczaneNobetDegisimTalep.EczaneNobetSonucId = eczaneNobetSonucId;
+                        // eczaneNobetDegisimTalep.EczaneNobetSonucId = eczaneNobetSonucId;
+                        eczaneNobetDegisimArzDetaylar = _eczaneNobetDegisimArzService.GetDetaylarByEczaneSonucId(eczaneNobetSonucId);
+
+                        eczaneNobetDegisimTalep.EczaneNobetDegisimArzId = eczaneNobetDegisimArzDetaylar.FirstOrDefault().Id;
                         eczaneNobetDegisimTalep.EczaneNobetGrupId = eczaneNobetDegisimTalepApi.MyEczaneNobetGrupId;
                         eczaneNobetDegisimTalep.Aciklama = eczaneNobetDegisimTalepApi.Aciklama;
                         eczaneNobetDegisimTalep.KayitTarihi = DateTime.Now;

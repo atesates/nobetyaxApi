@@ -81,6 +81,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Mapping.EczaneNobet
                 .WithMany(et => et.EczaneNobetGruplar)
                 .HasForeignKey(t => t.NobetGrupGorevTipId)
                 .WillCascadeOnDelete(false);
+
         }
     }
 }

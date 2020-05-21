@@ -22,20 +22,20 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.EczaneNobet
                 return ctx.EczaneNobetDegisimTalepler
                     .Select(s => new EczaneNobetDegisimTalepDetay
                     {
-                        EczaneNobetSonucId = s.EczaneNobetSonucId,
+                        //EczaneNobetSonucId = s.EczaneNobetSonucId,
                         NobetGrupAdi = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.Adi,
                         NobetGrupId = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.Id,
-                        EczaneAdi = s.EczaneNobetSonuc.EczaneNobetGrup.Eczane.Adi,
-                        EczaneId = s.EczaneNobetSonuc.EczaneNobetGrup.Eczane.Id,
+                        EczaneAdi = s.EczaneNobetDegisimArz.EczaneNobetSonuc.EczaneNobetGrup.Eczane.Adi,
+                        EczaneId = s.EczaneNobetDegisimArz.EczaneNobetSonuc.EczaneNobetGrup.Eczane.Id,
                         EczaneNobetGrupId = s.EczaneNobetGrupId,
                         UserId = s.UserId,
                         Kaydeden = s.User.Email,
                         Aciklama = s.Aciklama,
                         Id = s.Id,
                         KayitTarihi = s.KayitTarihi,
-                        NobetTarihi = s.EczaneNobetSonuc.Takvim.Tarih,
+                        NobetTarihi = s.EczaneNobetDegisimArz.EczaneNobetSonuc.Takvim.Tarih,
                         NobetUstGrupId = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.NobetUstGrupId,
-                        //EczaneNobetDegisimArzId = s.EczaneNobetDegisimArzId
+                        EczaneNobetDegisimArzId = s.EczaneNobetDegisimArzId
 
                     }).SingleOrDefault(filter);
             }
@@ -47,20 +47,20 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.EczaneNobet
                 var liste = ctx.EczaneNobetDegisimTalepler
                     .Select(s => new EczaneNobetDegisimTalepDetay
                     {
-                        EczaneNobetSonucId = s.EczaneNobetSonucId,
+                        //EczaneNobetSonucId = s.EczaneNobetSonucId,
                         NobetGrupAdi = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.Adi,
                         NobetGrupId = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.Id,
-                        EczaneAdi = s.EczaneNobetSonuc.EczaneNobetGrup.Eczane.Adi,
-                        EczaneId = s.EczaneNobetSonuc.EczaneNobetGrup.Eczane.Id,
+                        EczaneAdi = s.EczaneNobetDegisimArz.EczaneNobetSonuc.EczaneNobetGrup.Eczane.Adi,
+                        EczaneId = s.EczaneNobetDegisimArz.EczaneNobetSonuc.EczaneNobetGrup.Eczane.Id,
                         EczaneNobetGrupId = s.EczaneNobetGrupId,
                         UserId = s.UserId,
                         Kaydeden = s.User.Email,
                         Aciklama = s.Aciklama,
                         Id = s.Id,
                         KayitTarihi = s.KayitTarihi,
-                        NobetTarihi = s.EczaneNobetSonuc.Takvim.Tarih,
+                        NobetTarihi = s.EczaneNobetDegisimArz.EczaneNobetSonuc.Takvim.Tarih,
                         NobetUstGrupId = s.EczaneNobetGrup.NobetGrupGorevTip.NobetGrup.NobetUstGrupId,
-                        //EczaneNobetDegisimArzId = s.EczaneNobetDegisimArzId
+                        EczaneNobetDegisimArzId = s.EczaneNobetDegisimArzId
 
                     });
 

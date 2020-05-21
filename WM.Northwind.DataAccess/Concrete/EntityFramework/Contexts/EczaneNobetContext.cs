@@ -17,7 +17,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Contexts
             //Database.SetInitializer(new EczaneNobetInitializerAlanya());
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EczaneNobetContext>());
 
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<EczaneNobetContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EczaneNobetContext, Configuration>());
         }
 
         public EczaneNobetContext() : base("Name=EczaneNobetContext")
@@ -214,10 +214,10 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Contexts
             modelBuilder.Configurations.Add(new EczaneNobetSanalSonucMap());
             modelBuilder.Configurations.Add(new DebugEczaneMap());
 
-            //modelBuilder.Configurations.Add(new EczaneNobetDegisimArzMap());
-            //modelBuilder.Configurations.Add(new EczaneNobetDegisimTalepMap());
-            //modelBuilder.Configurations.Add(new MobilUygulamaYetkiMap());
-            //modelBuilder.Configurations.Add(new NobetUstGrupMobilUygulamaYetkiMap());
+            modelBuilder.Configurations.Add(new EczaneNobetDegisimArzMap());
+            modelBuilder.Configurations.Add(new EczaneNobetDegisimTalepMap());
+            modelBuilder.Configurations.Add(new MobilUygulamaYetkiMap());
+            modelBuilder.Configurations.Add(new NobetUstGrupMobilUygulamaYetkiMap());
 
 
             #endregion

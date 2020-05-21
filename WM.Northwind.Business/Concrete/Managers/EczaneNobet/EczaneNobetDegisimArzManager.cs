@@ -63,5 +63,12 @@ namespace WM.Northwind.Business.Concrete.Managers.EczaneNobet
         {
             return _eczaneNobetDegisimArzDal.GetDetayList(x => x.NobetUstGrupId == nobetUstGrupId);
         }
+        [CacheAspect(typeof(MemoryCacheManager))]
+
+        public List<EczaneNobetDegisimArzDetay> GetDetaylarByEczaneSonucId(int eczaneNobetSonucId)
+        {
+            return _eczaneNobetDegisimArzDal.GetDetayList(x => x.EczaneNobetSonucId == eczaneNobetSonucId);
+
+        }
     } 
 }
