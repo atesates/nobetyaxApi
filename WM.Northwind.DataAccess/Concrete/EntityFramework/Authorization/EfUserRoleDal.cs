@@ -26,7 +26,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Authorization
                         UserId = s.UserId,
                         BaslamaTarihi = s.BaslamaTarihi,
                         BitisTarihi = s.BitisTarihi,
-                        DeviceID = s.User.DeviceID
+                        CihazId = s.User.CihazId
                     }).SingleOrDefault(filter);
             }
         }
@@ -46,7 +46,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Authorization
                         UserId = s.UserId,
                         BaslamaTarihi = s.BaslamaTarihi,
                         BitisTarihi = s.BitisTarihi,
-                        DeviceID = s.User.DeviceID
+                        CihazId = s.User.CihazId
                     }).ToList()
                    : ctx.UserRoles
                     .Select(s => new UserRoleDetay
@@ -58,7 +58,7 @@ namespace WM.Northwind.DataAccess.Concrete.EntityFramework.Authorization
                         UserId = s.UserId,
                         BaslamaTarihi = s.BaslamaTarihi,
                         BitisTarihi = s.BitisTarihi,
-                        DeviceID = s.User.DeviceID
+                        CihazId = s.User.CihazId
                     })
                     .Where(filter)
                     .ToList();

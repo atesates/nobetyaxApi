@@ -18,7 +18,7 @@ namespace WM.Northwind.Entities.ComplexTypes.EczaneNobet
         public string RoleName { get; set; }
         [Display(Name = "Açıklama")]
         public int RoleId { get; set; }
-        public string DeviceID { get; set; }
+        public string CihazId { get; set; }
         public int UserId { get; set; }
         public DateTime BaslamaTarihi { get; set; }
         public DateTime? BitisTarihi { get; set; }

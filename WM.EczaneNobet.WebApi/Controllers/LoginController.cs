@@ -47,8 +47,8 @@ namespace WM.EczaneNobet.WebApi.Controllers
         {
             PushNotification pushNotification = new PushNotification(userApi.Password,
                  userApi.Username,
-                 userApi.DeviceID);
-            return Request.CreateResponse(HttpStatusCode.OK, userApi.DeviceID);
+                 userApi.CihazId);
+            return Request.CreateResponse(HttpStatusCode.OK, userApi.CihazId);
 
         }
 
@@ -80,7 +80,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
                 UserRoleDetayList = _userRoleService.GetDetayListByUserId(user.Id).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, "UserId:" + UserRoleDetayList[0].UserId
                     + ",Token:" + token
-                    + ",DeviceID:" + UserRoleDetayList[0].DeviceID
+                    + ",CihazId:" + UserRoleDetayList[0].CihazId
                     + ",Password:" + user.Password);
             }
             else
@@ -108,7 +108,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
                 UserRoleDetayList = _userRoleService.GetDetayListByUserId(user.Id).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, "UserId:" + UserRoleDetayList[0].UserId
                     + ",Token:" + token
-                    + ",DeviceID:" + UserRoleDetayList[0].DeviceID
+                    + ",CihazId:" + UserRoleDetayList[0].CihazId
                     + ",Password:" + user.Password);
             }
             else
@@ -135,7 +135,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
                 UserRoleDetayList = _userRoleService.GetDetayListByUserId(user.Id).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, "UserId:" + UserRoleDetayList[0].UserId
                     + ",Token:" + token
-                    + ",DeviceId:" + UserRoleDetayList[0].DeviceID
+                    + ",CihazId:" + UserRoleDetayList[0].CihazId
                     + ",Password:" + user.Password);
             }
             else
@@ -163,7 +163,7 @@ namespace WM.EczaneNobet.WebApi.Controllers
         //        UserRoleDetayList = _userRoleService.GetDetayListByUserId(user.Id).ToList();
         //        return Request.CreateResponse(HttpStatusCode.OK, "UserId:" + UserRoleDetayList[0].UserId
         //            + ",Token:" + token
-        //            + ",DeviceId:" + UserRoleDetayList[0].DeviceID
+        //            + ",CihazId:" + UserRoleDetayList[0].CihazId
         //            + ",Password:" + user.Password);
         //    }
         //    else
@@ -172,10 +172,10 @@ namespace WM.EczaneNobet.WebApi.Controllers
         //    }
         //}
 
-        [Route("deviceID")]
+        [Route("cihazId")]
         //[Route("login/{eMail:maxlength(100)}/{password:maxlength(100)}")]
         [HttpPost]
-        public HttpResponseMessage UpdateDeviceId([FromBody] UserApi userApi)//([FromUri]string eMail, [FromUri]string password)
+        public HttpResponseMessage UpdateCihazId([FromBody] UserApi userApi)//([FromUri]string eMail, [FromUri]string password)
         {
             LoginItem loginUser;
             User user;
@@ -183,13 +183,13 @@ namespace WM.EczaneNobet.WebApi.Controllers
 
             if (user != null)
             {
-                user.DeviceID = userApi.DeviceID;
+                user.CihazId = userApi.CihazId;
                 _userService.Update(user);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.Unauthorized, "DeviceID güncellenemedi.");
+                return Request.CreateResponse(HttpStatusCode.Unauthorized, "CihazId güncellenemedi.");
             }
         }
 

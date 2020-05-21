@@ -13,13 +13,13 @@ namespace WM.UI.Mvc.Areas.EczaneNobet
 {
     public class PushNotification
     {
-        public PushNotification(string Message, string Title, string DeviceId)
+        public PushNotification(string Message, string Title, string CihazId)
         {
             try
             {
                 var applicationID = "AAAA68QvRzk:APA91bEBFmrtD-gz7KXfoCtvoEfvhhvHVj3UPHvnGCa_WFojZKVaYqGY3Bz2esyYAobmM1ShnQj-HQncCO5z00NNYEPXgnJa3KbXIdXV3LU8xMdlILnYEpfeIpdaUCT0KRT3xFq4d5Ua";
                 var senderId = "1012608747321";
-                string deviceId = DeviceId;
+                string cihazId = CihazId;
 
                 WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
                 tRequest.Method = "post";
@@ -27,7 +27,7 @@ namespace WM.UI.Mvc.Areas.EczaneNobet
 
                 var data = new
                 {
-                    to = deviceId,
+                    to = cihazId,
                     notification = new
                     {
                         body = Message,

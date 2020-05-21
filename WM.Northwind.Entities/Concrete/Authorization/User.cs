@@ -52,7 +52,7 @@ namespace WM.Northwind.Entities.Concrete.Authorization
         public string TelefonNo { get; set; }
         [Display(Name = "Telefon")]
         public string TelefonNumarasi => new Iletisim().GetTelefonNumarasi();
-        public string DeviceID { get; set; }
+        public string CihazId { get; set; }
 
         public virtual List<UserRole> UserRoles { get; set; }
         public virtual List<UserEczaneOda> UserEczaneOdalar { get; set; }
